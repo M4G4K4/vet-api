@@ -18,6 +18,7 @@
         <quarkus.platform.version>2.16.0.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+        <org.lombok.version>1.18.26</org.lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -70,7 +71,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
+            <version>${org.lombok.version}</version>
         </dependency>
 
         <!-- MapStruct -->
@@ -84,6 +85,11 @@
             <artifactId>mapstruct-processor</artifactId>
             <version>${org.mapstruct.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
         </dependency>
 
         <!-- Test -->
