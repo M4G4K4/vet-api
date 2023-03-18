@@ -2,7 +2,6 @@ package com.pedro.services;
 
 import com.pedro.models.dto.animal.AnimalCreate;
 import com.pedro.models.dto.animal.AnimalList;
-import com.pedro.models.dto.animal.AnimalListItem;
 import com.pedro.models.dto.animal.AnimalRead;
 import com.pedro.models.entity.Animal;
 import com.pedro.models.entity.User;
@@ -15,9 +14,7 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class AnimalService {
@@ -56,9 +53,11 @@ public class AnimalService {
         PanacheQuery<Animal> animals = Animal.find(animalFilter.buildQuery(), animalFilter.buildParameters())
                 .page(animalFilter.getPage() - 1, animalFilter.getPerPage());
 
+        /*
         final List<AnimalListItem> animalListItems = animals.list().stream()
                 .map(mapper::animalListToAnimalListItem)
                 .collect(Collectors.toList());
+
 
         return AnimalList.builder()
                 .perPage(animalFilter.getPerPage())
@@ -67,5 +66,8 @@ public class AnimalService {
                 .total(Animal.count(animalFilter.buildQuery(), animalFilter.buildParameters()))
                 .animalListItems(animalListItems)
                 .build();
+
+         */
+        return AnimalList.builder().build();
     }
 }

@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 public class AnimalListItem {
 
-    private long id;
+    private String id;
 
     private String name;
 

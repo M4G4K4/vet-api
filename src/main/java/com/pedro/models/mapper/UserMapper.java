@@ -1,19 +1,17 @@
 package com.pedro.models.mapper;
 
+import com.pedro.models.dto.user.UserCreate;
 import com.pedro.models.dto.user.UserRead;
 import com.pedro.models.entity.User;
+import org.mapstruct.Mapper;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import javax.enterprise.context.ApplicationScoped;
+@Mapper(componentModel = "cdi",
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+public interface UserMapper {
 
-@ApplicationScoped
-public class UserMapper {
+    UserRead userToUserRead(User user);
 
-    public UserRead userToUserRead(final User user) {
-        return UserRead.builder()
-                .id(user.id)
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .fullName(user.getFullName())
-                .build();
-    }
+    User userCreateToUser(UserCreate userCreate);
+
 }

@@ -1,15 +1,20 @@
 package com.pedro.models.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 
 @Builder
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserCreate {
-
     @NotNull
     @JsonProperty("first_name")
     private String firstName;
@@ -19,6 +24,15 @@ public class UserCreate {
     private String lastName;
 
     @NotNull
+    private String email;
+
+    @JsonProperty("phone_number")
+    private String phone_number;
+
+    @NotNull
     @JsonProperty("card_identification")
     private String cardIdentification;
+
+    @NotNull
+    private String nif;
 }

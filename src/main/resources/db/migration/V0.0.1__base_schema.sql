@@ -1,20 +1,22 @@
-create sequence hibernate_sequence start 1 increment 1;
-
 CREATE TABLE public.users
 (
-    id         serial       not null unique,
+    id         varchar(255)       not null unique,
     first_name varchar(255) not null,
     last_name  varchar(255) not null,
-    card_identification varchar(255) null,
+    email varchar(255) not null,
+    phone_number varchar(255) null,
+    card_identification varchar(20) null,
+    nif varchar(20) null,
     CONSTRAINT user_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE public.animals
 (
-    id        serial       not null,
+    id        varchar(255)       not null,
     name      varchar(255) not null,
     type varchar(255) not null,
-    user_id   int          not null,
+    user_id   varchar(255)          not null,
+    sex varchar(10) not null,
     CONSTRAINT animals_pkey PRIMARY KEY (id),
     constraint animals_user_fk foreign key (user_id) references public.users
 );

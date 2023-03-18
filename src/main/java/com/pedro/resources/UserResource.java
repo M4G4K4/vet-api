@@ -4,6 +4,7 @@ import com.pedro.models.dto.user.UserCreate;
 import com.pedro.services.UserService;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -20,7 +21,7 @@ public class UserResource {
     UserService service;
 
     @POST
-    public Response createUser(final UserCreate userCreate) {
+    public Response createUser(@Valid final UserCreate userCreate) {
         return Response.ok(service.createUser(userCreate)).build();
     }
 }

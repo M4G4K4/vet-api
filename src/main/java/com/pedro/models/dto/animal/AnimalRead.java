@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class AnimalRead {
-    private Long id;
+    private String id;
 
     private String name;
 
