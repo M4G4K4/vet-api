@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 
 @Builder
@@ -38,4 +40,8 @@ public class Animal extends PanacheEntityBase {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;
+
+    public static Optional<Animal> findById(final String id){
+        return find("id", id).firstResultOptional();
+    }
 }

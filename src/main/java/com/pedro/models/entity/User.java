@@ -52,15 +52,19 @@ public class User extends PanacheEntityBase {
         return this.firstName.trim() + " " + this.lastName.trim();
     }
 
-    public static Optional<User> findByNif(String nif) {
+    public static Optional<User> findByNif(final String nif) {
         return find("nif", nif).firstResultOptional();
     }
 
-    public static Optional<User> findByCardIdentification(String cardIdentification) {
+    public static Optional<User> findByCardIdentification(final String cardIdentification) {
         return find("card_identification", cardIdentification).firstResultOptional();
     }
 
-    public static Optional<User> findByEmail(String email) {
+    public static Optional<User> findByEmail(final String email) {
         return find("email", email).firstResultOptional();
+    }
+
+    public static Optional<User> findById(final String id){
+        return find("id", id).firstResultOptional();
     }
 }

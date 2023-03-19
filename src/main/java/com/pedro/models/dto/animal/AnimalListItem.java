@@ -1,6 +1,6 @@
 package com.pedro.models.dto.animal;
 
-import com.pedro.models.dto.user.UserListItem;
+import com.pedro.models.dto.user.UserRead;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,5 +16,5 @@ public class AnimalListItem {
 
     private String type;
 
-    private UserListItem user;
+    private UserRead user;
 }

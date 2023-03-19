@@ -41,16 +41,14 @@ public class AnimalService {
     }
 
     public AnimalRead getAnimalById(final String id) {
-        final Optional<Animal> animalOptional = Animal.findByIdOptional(Long.parseLong(id));
-
-        Animal animal = animalOptional.orElseThrow(() -> new ServiceException(ErrorCode.ANIMAL_NOT_FOUND));
+        final Animal animal = Animal.findById(id).orElseThrow(() -> new ServiceException(ErrorCode.ANIMAL_NOT_FOUND));
 
         return mapper.animalToAnimalRead(animal);
     }
 
 
     public AnimalList getAnimals(final AnimalFilter animalFilter) {
-        PanacheQuery<Animal> animals = Animal.find(animalFilter.buildQuery(), animalFilter.buildParameters())
+        final PanacheQuery<Animal> animals = Animal.find(animalFilter.buildQuery(), animalFilter.buildParameters())
                 .page(animalFilter.getPage() - 1, animalFilter.getPerPage());
 
         /*
